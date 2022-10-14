@@ -3,7 +3,7 @@ const Pessoas = require('../models/pessoasSchema.js')
 class PessoaController {
 
     static exibeMensagem(req, res) {
-        return res.status(200).send({mensagem: 'Welcome to the API'})
+        return res.status(200).send({mensagem: 'Welcome to the API! (/pessoas -> display users) (/pessoas/:id -> display a certain user)'})
     }
 
     static async exibePessoas(req, res) {
