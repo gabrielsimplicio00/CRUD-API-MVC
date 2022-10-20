@@ -1,0 +1,68 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API de cadastro de pessoas",
+    "description": "API para criar e guardar informações de usuários no banco de dados.",
+    "version": "0.0.1"
+  },
+  "externalDocs": {
+    "description": "Meu portfolio",
+    "url": "https://gabrielsimplicio00.github.io/portfolio/"
+  },
+  "servers": [
+    {
+      "url": "https://crud-api-9vkx.onrender.com",
+      "description": "API de cadastro de pessoas"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "API local de cadastro de pessoas"
+    }
+  ],
+  "schemes": "https",
+  "paths": {
+    "/pessoas": {
+      "get": {
+        "summary": "Busca todos os usuários no banco de dados",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "string"
+                      },
+                      "nome": {
+                        "type": "string"
+                      },
+                      "sobrenome": {
+                        "type": "string"
+                      },
+                      "idade": {
+                        "type": "number"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "profissao": {
+                        "type": "string"
+                      },
+                      "__v": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
