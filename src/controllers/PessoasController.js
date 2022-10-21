@@ -3,7 +3,8 @@ const Pessoas = require('../models/pessoasSchema.js')
 class PessoaController {
 
     static exibeMensagem(req, res) {
-        return res.status(200).send({mensagem: 'Welcome to the API! (/pessoas -> display users) (/pessoas/:id -> display a certain user)'})
+        return res.redirect("/docs")
+        // return res.status(200).send({mensagem: 'Welcome to the API! (/docs -> swagger documentation)'})
     }
 
     static async exibePessoas(req, res) {
@@ -19,6 +20,9 @@ class PessoaController {
     static async exibeUmaPessoa(req, res){
         const { id } = req.params
         const pessoa = await Pessoas.findById(id)
+        if (!pessoa) {
+            return res.status(404).send("O usuário não foi encontrado")
+        }
         return res.status(200).send(pessoa)
     }
 
@@ -26,11 +30,17 @@ class PessoaController {
         const { id } = req.params
         const dados = req.body
         const pessoaAtt = await Pessoas.findByIdAndUpdate(id, dados)
+        if (!pessoaAtt) {
+            return res.status(404).send("O usuário não foi encontrado")
+        }
         return res.status(200).send(pessoaAtt)
     }
 
     static async deletaPessoa(req, res){
         const { id } = req.params
+        if ( !(await Pessoas.exists({_id: id})) ) {
+            return res.status(404).send("O usuário não foi encontrado")
+        }
         await Pessoas.findByIdAndDelete(id, {$exists: true})
         return res.status(200).send({message: "Usuário deletado com sucesso"})
     }
