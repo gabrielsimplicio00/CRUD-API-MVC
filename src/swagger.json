@@ -2,27 +2,25 @@
   "openapi": "3.0.1",
   "info": {
     "title": "API de cadastro de pessoas",
-    "description": "API para criar e guardar informações de usuários no banco de dados.",
+    "description": "API de criação e armazenamento de informações de usuários no banco de dados, feita com o propósito de estudo.",
     "version": "0.0.1"
   },
   "externalDocs": {
     "description": "Meu portfolio",
     "url": "https://gabrielsimplicio00.github.io/portfolio/"
   },
-  "servers": [
+  "servers": [],
+  "tags": [
     {
-      "url": "http://localhost:3000",
-      "description": "API teste de cadastro de pessoas"
-    },
-    {
-      "url": "https://crud-api-9vkx.onrender.com",
-      "description": "API de cadastro de pessoas"
+      "name": "pessoa",
+      "description": "Todas as rotas de usuário para efetuar o CRUD"
     }
   ],
   "schemes": ["https", "http"],
   "paths": {
     "/pessoas": {
       "get": {
+        "tags": ["pessoa"],
         "summary": "Busca todos os usuários no banco de dados",
         "responses": {
           "200": {
@@ -63,7 +61,8 @@
           }
         }
       },
-      "post" : {
+      "post": {
+        "tags": ["pessoa"],
         "summary": "Cadastro de pessoas",
         "description": "Essa rota será responsável por cadastrar usuários",
         "requestBody": {
@@ -105,6 +104,7 @@
     },
     "/pessoas/{id}": {
       "get": {
+        "tags": ["pessoa"],
         "summary": "Busca um usuário no banco de dados pelo ID",
         "parameters": [
           {
@@ -157,6 +157,7 @@
         }
       },
       "put": {
+        "tags": ["pessoa"],
         "summary": "Altera um usuário no banco de dados pelo ID",
         "parameters": [
           {
@@ -206,6 +207,7 @@
         }
       },
       "delete": {
+        "tags": ["pessoa"],
         "summary": "Deleta um usuário no banco de dados pelo ID",
         "parameters": [
           {
