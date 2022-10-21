@@ -16,7 +16,7 @@ db.once('open', () => {
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 app.use(cors({
-    origin: 'https://crud-api-9vkx.onrender.com'
+    origin: '*'
 }))
 
 // app.use((req, res, next) => {
